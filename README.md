@@ -25,3 +25,25 @@ X_train = [
 model = IsolationForest(contamination=0.1)
 model.fit(X_train)
 dump(model, 'model/isolation_forest_model.joblib')
+
+進階功能 1：整合 Suricata 規則（簽章）進行比對
+ 進階功能 2：離線分析 PCAP 檔案
+
+                   +--------------------+
+                   | Suricata Rules     |
+                   | (signatures.rules) |
+                   +--------+-----------+
+                            |
+                            v
++----------+       +-------------------+       +------------------+
+|  PCAP    +------->  Packet Handler   +------->  Signature Match |
+|  Replayer|       |  (real-time/pcap) |       +------------------+
++----------+       |                   |         +--------------------+
+                   |                   +---------> Anomaly Detection  |
+                   |                   |         +--------------------+
+                   +-------------------+          
+                            |
+                            v
+                    +------------------+
+                    |   Alert Logger   |
+                    +------------------+

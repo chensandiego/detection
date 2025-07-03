@@ -105,3 +105,21 @@ docker run --net=host --cap-add=NET_ADMIN -e LINE_TOKEN="你的LINE_TOKEN" -e SL
 | `blocked.html`      | Web 頁面樣板             |
 | `docker_cmd.sh`     | 啟動 IDS + 解封服務的指令     |
 
+New Feature will process wireshark pcap 
+
+  To use this feature, run the following command:
+
+
+
+   1 python ids.py --mode monitor
+
+
+
+  This will start the monitoring process. Any new PCAP files that are added to the wireshark_pcapoutput directory will be processed,
+  and any threats will be detected. The processed files will then be moved to the processed_pcaps directory.
+
+
+  I recommend you to test this new feature by adding some PCAP files to the wireshark_pcapoutput directory.
+
+
+
